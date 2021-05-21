@@ -22,10 +22,7 @@ imr_files = {'phenom':'../posteriors/reweighted/REWEIGHTED_IMR-XPHM.hdf',
 mass_ratios = {}
 for waveform in imr_files:
     fp = h5py.File(imr_files[waveform])
-    try:
-        mass_ratios[waveform] = 1./fp['samples/q'][()]
-    except KeyError:
-        mass_ratios[waveform] = 1./fp['q'][()]
+    mass_ratios[waveform] = 1./fp['samples/q'][()]
     fp.close()
 # Reweighted ringdown results for mass ratio
 kerr_reweighted = '../posteriors/reweighted/REWEIGHTED_KERR-220_330-07MS.hdf'

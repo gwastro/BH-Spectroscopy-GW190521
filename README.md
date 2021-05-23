@@ -1,2 +1,29 @@
-# BH-Spectroscopy-GW190521
-Data release for Capano et al., "Observation of a multimode quasi-normal spectrum from a perturbed black hole".
+# Observation of a multimode quasi-normal spectrum from a perturbed black hole
+
+**Collin D. Capano<sup>1,2</sup>, Miriam Cabero<sup>3</sup>, Jahed Abedi$<sup>1,2</sup>, Shilpa Kastha<sup>1,2</sup>, Julian Westerweck<sup>1,2</sup>, Alexander H. Nitz<sup>1,2</sup>, Alex B. Nielsen<sup>4</sup>, Badri Krishnan<sup>1,2,5</sup>**
+
+<sub>1. [Albert-Einstein-Institut, Max-Planck-Institut for Gravitationsphysik, D-30167 Hannover, Germany](http://www.aei.mpg.de/obs-rel-cos)</sub>  
+<sub>2. Leibniz Universitat Hannover, D-30167 Hannover, Germany</sub>  
+<sub>3. Department of Physics and Astronomy, The University of British Columbia, Vancouver, BC V6T 1Z4, Canada </sub>
+<sub>4. Department of Mathematics and Physics, University of Stavanger, NO-4036 Stavanger, Norway </sub>
+<sub>5. Institute for Mathematics, Astrophysics and Particle Physics, Radboud University, Heyendaalseweg 135, 6525 AJ Nijmegen, The Netherlands</sup>
+
+This repository is a companion to [Capano et al., arXiv:2105.05238](https://arxiv.org/abs/2105.05238). It contains posterior probability density files for the parameters ringdown analyses presented in the text and the configuration files needed to replicate them. We also provide notebooks and scripts for reproducing many of the plots from the publication. 
+
+To keep the repository size manageable, we do not provide full posterior files for all of the analyses shown in Figs. 2 and S.4, but do provide the Bayes factors necessary to reproduce the those figures. We also provide the configuration files for all the analyses used to obtain those Bayes factors.
+
+We encourage use of these data in derivative works. If you use the material provided here, please cite the paper using the reference:
+```
+@article{Capano:2021etf,
+    author = "Capano, Collin D. and Cabero, Miriam and Abedi, Jahed 
+              and Kastha, Shilpa and Westerweck, Julian
+              and Nitz, Alexander H. and Nielsen, Alex B.
+              and Krishnan, Badri",
+    title = "{Observation of a multimode quasi-normal spectrum from a perturbed black hole}",
+    eprint = "2105.05238",
+    archivePrefix = "arXiv",
+    primaryClass = "gr-qc",
+    month = "5",
+    year = "2021"
+}
+```

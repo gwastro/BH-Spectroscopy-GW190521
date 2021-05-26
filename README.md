@@ -8,7 +8,7 @@
 <sub>4. Department of Mathematics and Physics, University of Stavanger, NO-4036 Stavanger, Norway </sub>
 <sub>5. Institute for Mathematics, Astrophysics and Particle Physics, Radboud University, Heyendaalseweg 135, 6525 AJ Nijmegen, The Netherlands</sup>
 
-This repository is a companion to [Capano et al., arXiv:2105.05238](https://arxiv.org/abs/2105.05238). It contains posterior probability density files for the parameters ringdown analyses presented in the text and the configuration files needed to replicate them. We also provide notebooks and scripts for reproducing many of the plots from the publication. 
+This repository is a companion to [Capano et al., arXiv:2105.05238](https://arxiv.org/abs/2105.05238). It contains posterior probability density files for parameters from the ringdown analyses presented in the text and the configuration files needed to replicate them. We also provide notebooks and scripts for reproducing many of the plots from the publication. 
 
 To keep the repository size manageable, we do not provide full posterior files for all of the analyses shown in Figs. 2 and S.4, but do provide the Bayes factors necessary to reproduce the those figures. We also provide the configuration files for all the analyses used to obtain those Bayes factors.
 

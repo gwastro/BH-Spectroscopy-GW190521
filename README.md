@@ -1,6 +1,6 @@
 # Observation of a multimode quasi-normal spectrum from a perturbed black hole
 
-**Collin D. Capano<sup>1,2</sup>, Miriam Cabero<sup>3</sup>, Jahed Abedi$<sup>1,2</sup>, Shilpa Kastha<sup>1,2</sup>, Julian Westerweck<sup>1,2</sup>, Alexander H. Nitz<sup>1,2</sup>, Alex B. Nielsen<sup>4</sup>, Badri Krishnan<sup>1,2,5</sup>**
+**Collin D. Capano<sup>1,2</sup>, Miriam Cabero<sup>3</sup>, Jahed Abedi<sup>1,2</sup>, Shilpa Kastha<sup>1,2</sup>, Julian Westerweck<sup>1,2</sup>, Alexander H. Nitz<sup>1,2</sup>, Alex B. Nielsen<sup>4</sup>, Badri Krishnan<sup>1,2,5</sup>**
 
 <sub>1. [Albert-Einstein-Institut, Max-Planck-Institut for Gravitationsphysik, D-30167 Hannover, Germany](http://www.aei.mpg.de/obs-rel-cos)</sub><br />
 <sub>2. Leibniz Universitat Hannover, D-30167 Hannover, Germany</sub><br />

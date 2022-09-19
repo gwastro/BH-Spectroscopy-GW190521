@@ -4,12 +4,12 @@ from pycbc import conversions
 from pycbc.results import scatter_histograms
 
 # Load data from posterior files
-kerr_file = '../posteriors/kerr/220_330/KERR-220_330-07MS.hdf'
+kerr_file = '../posteriors/kerr/220_330/KERR-220_330-06MS.hdf'
 fp_kerr = h5py.File(kerr_file, 'r')
 kerr_mass = fp_kerr['samples/final_mass'][()]
 kerr_spin = fp_kerr['samples/final_spin'][()]
 
-nongr_file = '../posteriors/nongr/NONGR-220_330-07MS.hdf'
+nongr_file = '../posteriors/nongr/NONGR-220_330-06MS.hdf'
 fp_nongr = h5py.File(nongr_file, 'r')
 f220, tau220 = fp_nongr['samples/f220'][()], fp_nongr['samples/tau220'][()]
 f330 = fp_nongr['samples/f330'][()] * (1 + fp_nongr['samples/delta_f330'][()])

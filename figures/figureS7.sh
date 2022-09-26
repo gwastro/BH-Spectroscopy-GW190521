@@ -1,0 +1,12 @@
+pycbc_inference_plot_posterior \
+    --force \
+    --plot-contours  \
+    --plot-marginal  \
+    --plot-density  \
+    --plot-prior ../configuration/nongr/NONGR-220_330-06MS.ini \
+    --marginal-percentiles 5 95 \
+    --input-file  ../posteriors/nongr/NONGR-220_330-06MS.hdf \
+    --output-file FigureS7-NONGR-220_330-06MS.png \
+    --expected-parameters delta_f330:0 delta_tau330:0 \
+    --parameters 'delta_f330:$\delta f_{330}$' 'delta_tau330:$\delta \tau_{330}$' 'f330*(1+delta_f330):$f_{330}(1+\delta f_{330})$' \
+    --mpl-style default #seaborn-darkgrid

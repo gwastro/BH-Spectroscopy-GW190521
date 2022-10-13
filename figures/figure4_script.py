@@ -12,7 +12,7 @@ def q33(amp33):
     return massratio
 
 # Load data from posterior files
-kerr_file = '../posteriors/kerr/220_330/KERR-220_330-07MS.hdf'
+kerr_file = '../posteriors/kerr/220_330/KERR-220_330-06MS.hdf'
 fp_kerr = h5py.File(kerr_file, 'r')
 amp330 = fp_kerr['samples/amp330'][()]
 
@@ -25,7 +25,7 @@ for waveform in imr_files:
     mass_ratios[waveform] = 1./fp['samples/q'][()]
     fp.close()
 # Reweighted ringdown results for mass ratio
-kerr_reweighted = '../posteriors/reweighted/REWEIGHTED_KERR-220_330-07MS.hdf'
+kerr_reweighted = '../posteriors/reweighted/REWEIGHTED_KERR-220_330-06MS.hdf'
 fp_kerr_reweighted = h5py.File(kerr_reweighted, 'r')
 amp330_reweighted = fp_kerr_reweighted['samples/amp330'][()]
 mass_ratios['kerr'] = 1./q33(amp330_reweighted)

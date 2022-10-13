@@ -89,4 +89,4 @@ ax2.set_yticklabels([])
 ax2.legend(loc=(0.59,1.75))
 
 fig.set_dpi(250)
-fig.savefig('newFigure4.png')
+fig.savefig('Figure4.png')

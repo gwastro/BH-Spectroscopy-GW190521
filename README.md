@@ -1,12 +1,13 @@
 # Observation of a multimode quasi-normal spectrum from a perturbed black hole
 
-**Collin D. Capano<sup>1,2</sup>, Miriam Cabero<sup>3</sup>, Jahed Abedi<sup>1,2</sup>, Shilpa Kastha<sup>1,2</sup>, Julian Westerweck<sup>1,2</sup>, Alexander H. Nitz<sup>1,2</sup>, Alex B. Nielsen<sup>4</sup>, Badri Krishnan<sup>1,2,5</sup>**
+**Collin D. Capano<sup>1,2,3</sup>, Miriam Cabero<sup>4</sup>, Jahed Abedi<sup>1,2,5</sup>, Shilpa Kastha<sup>1,2</sup>, Julian Westerweck<sup>1,2</sup>, Alexander H. Nitz<sup>1,2</sup>, Yi-Fan Wang<sup>1,2</sup>, Alex B. Nielsen<sup>5</sup>, Badri Krishnan<sup>1,2,6</sup>**
 
 <sub>1. [Albert-Einstein-Institut, Max-Planck-Institut for Gravitationsphysik, D-30167 Hannover, Germany](http://www.aei.mpg.de/obs-rel-cos)</sub><br />
 <sub>2. Leibniz Universitat Hannover, D-30167 Hannover, Germany</sub><br />
-<sub>3. Department of Physics and Astronomy, The University of British Columbia, Vancouver, BC V6T 1Z4, Canada </sub><br />
-<sub>4. Department of Mathematics and Physics, University of Stavanger, NO-4036 Stavanger, Norway </sub><br />
-<sub>5. Institute for Mathematics, Astrophysics and Particle Physics, Radboud University, Heyendaalseweg 135, 6525 AJ Nijmegen, The Netherlands </sub>
+<sub>3. Department of Physics, University of Massachusetts Dartmouth, Dartmouth, MA 02747, USA </sub><br />
+<sub>4. Department of Physics and Astronomy, The University of British Columbia, Vancouver, BC V6T 1Z4, Canada </sub><br />
+<sub>5. Department of Mathematics and Physics, University of Stavanger, NO-4036 Stavanger, Norway </sub><br />
+<sub>6. Institute for Mathematics, Astrophysics and Particle Physics, Radboud University, Heyendaalseweg 135, 6525 AJ Nijmegen, The Netherlands </sub>
 
 This repository is a companion to [Capano et al., arXiv:2105.05238](https://arxiv.org/abs/2105.05238). It contains posterior probability density files for parameters from the ringdown analyses presented in the text and the configuration files needed to replicate them. We also provide notebooks and scripts for reproducing many of the plots from the publication. 
 
@@ -17,7 +18,7 @@ We encourage use of these data in derivative works. If you use the material prov
 @article{Capano:2021etf,
     author = "Capano, Collin D. and Cabero, Miriam and Abedi, Jahed 
               and Kastha, Shilpa and Westerweck, Julian
-              and Nitz, Alexander H. and Nielsen, Alex B.
+              and Nitz, Alexander H. and Wang, Yi-Fan and Nielsen, Alex B.
               and Krishnan, Badri",
     title = "{Observation of a multimode quasi-normal spectrum from a perturbed black hole}",
     eprint = "2105.05238",

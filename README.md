@@ -9,6 +9,8 @@
 <sub>5. Department of Mathematics and Physics, University of Stavanger, NO-4036 Stavanger, Norway </sub><br />
 <sub>6. Institute for Mathematics, Astrophysics and Particle Physics, Radboud University, Heyendaalseweg 135, 6525 AJ Nijmegen, The Netherlands </sub>
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10056546.svg)](https://doi.org/10.5281/zenodo.10056546)
+
 This repository is a companion to [Capano et al., arXiv:2105.05238](https://arxiv.org/abs/2105.05238). It contains posterior probability density files for parameters from the ringdown analyses presented in the text and the configuration files needed to replicate them. We also provide notebooks and scripts for reproducing many of the plots from the publication. 
 
 To keep the repository size manageable, we do not provide full posterior files for all of the analyses shown in Figs. 2 and S.4, but do provide the Bayes factors necessary to reproduce the those figures. We also provide the configuration files for all the analyses used to obtain those Bayes factors.
@@ -28,3 +30,6 @@ We encourage use of these data in derivative works. If you use the material prov
     year = "2021"
 }
 ```
+
+If you download and directly use data provided in this relase, please cite DOI: [10.5281/zenodo.10056546](https://doi.org/10.5281/zenodo.10056546). An archived version of the data may also be downloaded from there.
+

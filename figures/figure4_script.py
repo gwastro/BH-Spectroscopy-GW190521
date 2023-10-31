@@ -1,92 +1,81 @@
 import h5py, numpy
-from matplotlib import pyplot
-from pycbc.results import str_utils
-
-# Amplitude fits from Borhanian et al., CQG 37 (2020)
-alpha33 = 0.4433
-def q33(amp33):
-    # A_33 = alpha_33 * delta
-    cond = amp33 <= alpha33
-    amp = amp33[cond]
-    massratio = (alpha33 + amp) / (alpha33 - amp)
-    return massratio
+from matplotlib import pyplot, patches
+from pycbc import conversions
+from pycbc.results import scatter_histograms
 
 # Load data from posterior files
 kerr_file = '../posteriors/kerr/220_330/KERR-220_330-06MS.hdf'
 fp_kerr = h5py.File(kerr_file, 'r')
-amp330 = fp_kerr['samples/amp330'][()]
+kerr_mass = fp_kerr['samples/final_mass'][()]
+kerr_spin = fp_kerr['samples/final_spin'][()]
 
-# Reweighted IMR files for mass ratio
-imr_files = {'phenom':'../posteriors/reweighted/REWEIGHTED_IMR-XPHM.hdf',
-             'nrsur':'../posteriors/reweighted/REWEIGHTED_IMR-NRSUR.hdf'}
-mass_ratios = {}
-for waveform in imr_files:
-    fp = h5py.File(imr_files[waveform])
-    mass_ratios[waveform] = 1./fp['samples/q'][()]
-    fp.close()
-# Reweighted ringdown results for mass ratio
-kerr_reweighted = '../posteriors/reweighted/REWEIGHTED_KERR-220_330-06MS.hdf'
-fp_kerr_reweighted = h5py.File(kerr_reweighted, 'r')
-amp330_reweighted = fp_kerr_reweighted['samples/amp330'][()]
-mass_ratios['kerr'] = 1./q33(amp330_reweighted)
+nongr_file = '../posteriors/nongr/NONGR-220_330-06MS.hdf'
+fp_nongr = h5py.File(nongr_file, 'r')
+f220, tau220 = fp_nongr['samples/f220'][()], fp_nongr['samples/tau220'][()]
+f330 = fp_nongr['samples/f330'][()] * (1 + fp_nongr['samples/delta_f330'][()])
+tau330 = fp_nongr['samples/tau330'][()] * \
+        (1 + fp_nongr['samples/delta_tau330'][()])
 
-#Make figure
-def plot_percentiles(ax, samples, color):
-    plotp = numpy.percentile(samples, [5, 95])
-    for val in plotp:
-        ax.axvline(x=val, ls='dashed', color=color, lw=2, zorder=5)
-def get_interval(samples):
-    values_min, values_med, values_max = numpy.percentile(samples, [5, 50, 95])
-    negerror = values_med - values_min
-    poserror = values_max - values_med
-    return '${0}$'.format(str_utils.format_value(
-            values_med, negerror, plus_error=poserror))
+mass330 = conversions.final_mass_from_f0_tau(f330, tau330, l=3, m=3)
+spin330 = conversions.final_spin_from_f0_tau(f330, tau330, l=3, m=3)
+# Exclude unphysical values from conversions above
+def exclude_regions(masses, spins):
+    conds = (masses>=0) & (spins>=-1) & (spins<=1)
+    return masses[conds], spins[conds]
+nongr_mass330, nongr_spin330 = exclude_regions(mass330, spin330)
 
-fig = pyplot.figure(); ax1, ax2 = fig.subplots(2,1)
+# Make figure
+width_ratios = [3, 1]
+height_ratios = [1, 3]
 
-# Top panel: amplitude distribution
-amp330_color = 'navy'
-fillcolor = 'lightsteelblue'
-ax1.hist(amp330, label='Ringdown 330 mode',
-        edgecolor=amp330_color, facecolor=fillcolor,
-        bins=50, range=(0,alpha33), density=True,
-        histtype='stepfilled', lw=2)
-plot_percentiles(ax1, amp330, amp330_color)
+params = ['mass', 'spin']
+nparams = len(params)
+lbls={'mass':'redshifted final mass $(1+z)M_f$ [$M_\odot$]',
+      'spin':'final spin $\chi_f$'}
+plot_colors = ['navy', 'lightseagreen', 'yellowgreen']
 
-ax1.set_title('amplitude ratio $A_{330}/A_{220}$', fontsize=14)
-ax1.set_xlim(0, alpha33)
-ax1.set_yticks([])
-ax1.set_yticklabels([])
-ax1.xaxis.tick_top()
+fig, axis_dict = scatter_histograms.create_axes_grid(
+            params, labels=lbls,
+            width_ratios=width_ratios, height_ratios=height_ratios,
+            no_diagonals=False)
 
-# Bottom panel: mass ratio distributions
-# Mass ratio from 33 mode
-ax2.hist(mass_ratios['kerr'], label='Ringdown 330 mode',
-        edgecolor=amp330_color, facecolor=fillcolor,
-        bins=50, range=(0,1), density=True,
-        histtype='stepfilled', lw=2)
-plot_percentiles(ax2, mass_ratios['kerr'], amp330_color)
-print('Mass ratio: ', get_interval(mass_ratios['kerr']))
+all_samples = [{'mass':kerr_mass, 'spin':kerr_spin},
+               {'mass':nongr_mass330, 'spin':nongr_spin330}]
+legend_lbls = ['Kerr 220 + 330', 'Kerr with $\delta$(330)']
 
-# Mass ratio from NR Surrogate
-color_sur = 'rosybrown'
-ax2.hist(mass_ratios['nrsur'], label='IMR NRSurrogate',
-        edgecolor=color_sur, zorder=3,
-        bins=50, range=(0,1), density=True,
-        histtype='step', lw=1.5)
-# Mass ratio from PhenomXPHM
-color_phenom = 'purple'
-ax2.hist(mass_ratios['phenom'], label='IMR PhenomXPHM',
-        edgecolor=color_phenom,
-        bins=50, range=(0,1), density=True,
-        histtype='step', lw=1.5)
+# Get the minimum and maximum of the mass for the plot limits
+joint_masses = numpy.concatenate([s['mass'] for s in all_samples])
+mins = {'mass':numpy.min(joint_masses), 'spin':0.2}
+maxs = {'mass':numpy.max(joint_masses), 'spin':1}
 
-ax2.set_xlabel('mass ratio', fontsize=14)
-ax2.set_xlim(0,1)
-ax2.invert_xaxis()
-ax2.set_yticks([])
-ax2.set_yticklabels([])
-ax2.legend(loc=(0.59,1.75))
+handles = []
+for si, samples in enumerate(all_samples):
+    samples_color = plot_colors[si]
 
+    # Plot 1D histograms
+    for pi, param in enumerate(params):
+        ax, _, _ = axis_dict[param, param]
+        rotated = nparams == 2 and pi == nparams-1
+        scatter_histograms.create_marginalized_hist(ax,
+                samples[param], label=lbls[param],
+                color=samples_color, fillcolor=None,
+                linecolor=samples_color, title=False,
+                rotated=rotated, plot_min=mins[param],
+                plot_max=maxs[param], percentiles=[5,95])
+
+    # Plot 2D contours
+    ax, _, _ = axis_dict[('mass','spin')]
+    scatter_histograms.create_density_plot(
+                'mass', 'spin', samples, plot_density=False,
+                plot_contours=True, percentiles=[90],
+                contour_color=samples_color,
+                xmin=mins['mass'], xmax=maxs['mass'],
+                ymin=mins['spin'], ymax=maxs['spin'],
+                ax=ax, use_kombine=False)
+
+    handles.append(patches.Patch(color=samples_color, label=legend_lbls[si]))
+
+fig.legend(loc=(0.48,0.13),
+        handles=handles, labels=legend_lbls)
 fig.set_dpi(250)
 fig.savefig('Figure4.png')

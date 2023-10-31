@@ -77,4 +77,4 @@ ax.set_yticklabels([])
 ax.legend(loc='upper right')
 
 fig.set_dpi(250)
-fig.savefig('Figure4b.png')
+fig.savefig('mass_ratio_estimate.png')

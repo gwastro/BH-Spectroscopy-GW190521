@@ -1,4 +1,4 @@
-# Observation of a multimode quasi-normal spectrum from a perturbed black hole
+# Multimode Quasinormal Spectrum from a Perturbed Black Hole
 
 **Collin D. Capano<sup>1,2,3</sup>, Miriam Cabero<sup>4</sup>, Jahed Abedi<sup>1,2,5</sup>, Shilpa Kastha<sup>1,2</sup>, Julian Westerweck<sup>1,2</sup>, Alexander H. Nitz<sup>1,2</sup>, Yi-Fan Wang<sup>1,2</sup>, Alex B. Nielsen<sup>5</sup>, Badri Krishnan<sup>1,2,6</sup>**
 
@@ -20,7 +20,7 @@ We encourage use of these data in derivative works. If you use the material prov
               and Kastha, Shilpa and Westerweck, Julian
               and Nitz, Alexander H. and Wang, Yi-Fan and Nielsen, Alex B.
               and Krishnan, Badri",
-    title = "{Observation of a multimode quasi-normal spectrum from a perturbed black hole}",
+    title = "{Multimode Quasinormal Spectrum from a Perturbed Black Hole}",
     eprint = "2105.05238",
     archivePrefix = "arXiv",
     primaryClass = "gr-qc",
